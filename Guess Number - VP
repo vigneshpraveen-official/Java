@@ -1,0 +1,60 @@
+import java.util.*;
+import java.util.Random;
+
+
+public class Main {
+    int score = 0;
+    Scanner sc = new Scanner(System.in); 
+
+    void game() {
+        System.out.println("Welcome to GUESS Game");
+        System.out.println("Instructions");
+        get(); 
+    }
+
+    void get() {
+        System.out.println("Enter How Many Time You Want To Guess :");
+        int N = sc.nextInt();
+
+        if (N <= 0) { 
+            get();
+        }
+        play(N);
+    }
+
+    void play(int N) {
+        for (int i = 1; i <= N; i++) {
+            System.out.println("*************************");
+            System.out.println("Round :" + i);
+            // System.out.println("Score : " + score);
+            System.out.println("Enter Your Guess:");
+            int guess = sc.nextInt();
+            int random = (int)(Math.random() * 11);
+            System.out.println("Current Number:" + guess);
+            System.out.println("Random Number:" + random);
+            
+            if(guess <= 10 && guess>=0)
+            {
+                if(guess == random)
+                    score = score + 2;
+                /*else
+                    score = score - 1;*/
+            }
+            else
+                System.out.println("You Entered Wrong Guess \"Enter Value Between 1 - 10\" :");
+            System.out.println("Score : " + score);
+            System.out.println("*************************");
+            System.out.println();
+            
+            if(i == N)
+            {
+                System.out.println("Your Total Score End of " + i + " Rounds :" + score);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Main run = new Main();
+        run.game();
+    }
+}
